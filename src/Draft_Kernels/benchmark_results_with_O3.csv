@@ -1,0 +1,3 @@
+Program,Time(ms),GFLOPs,OperationalIntensity
+conv_with_time,18.809952,,
+conv_inline_ptx_time,,,

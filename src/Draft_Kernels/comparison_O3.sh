@@ -9,7 +9,7 @@ CHANNELS=3
 PROGRAMS=("conv_with_time" "conv_inline_ptx_time")
 
 # CSV output
-OUTPUT_CSV="benchmark_results_with_O3.csv"
+OUTPUT_CSV="benchmark_results_no_O3.csv"
 echo "Program,Time(ms),GFLOPs,OperationalIntensity" > $OUTPUT_CSV
 
 # Calculate FLOPs and Bytes once (same for all programs if args fixed)
@@ -22,7 +22,7 @@ OI=$(echo "scale=4; $FLOPS / $BYTES" | bc)
 
 for prog in "${PROGRAMS[@]}"; do
     # Compile
-    nvcc -O3 -o $prog $prog.cu
+    nvcc -o $prog $prog.cu
 
     # Run and extract time
     TIME_MS=$(./$prog $HEIGHT $WIDTH $CHANNELS | grep "Kernel execution time" | awk '{print $4}')

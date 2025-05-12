@@ -6,7 +6,7 @@ WIDTH=1024
 CHANNELS=3
 
 # List of programs to benchmark
-PROGRAMS=("conv_with_time" "conv_inline_ptx_time")
+PROGRAMS=("conv_with_time" "conv_inline_ptx_with_time")
 
 # CSV output
 OUTPUT_CSV="benchmark_results_no_O3.csv"
