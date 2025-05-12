@@ -1,13 +1,17 @@
 NVCC:
 
-nvcc -ptx conv_single_kernel.cu -arch sm_90 -o convSing_arch90.ptx
-nvcc -ptx conv_single_kernel.cu -arch sm_89 -o convSing.ptx
+nvcc -ptx convolution.cu -arch sm_90 -o convSing_arch90.ptx
+nvcc -ptx convolution.cu -arch sm_89 -o convSing.ptx
 nvcc -arch=sm_89 -cubin convSing.ptx -o convSing.cubin
 nvcc -arch=sm_90 -cubin convSing_arch90.ptx -o convSing_arch90.cubin
 
 CUOBJDUMP:
 
-cuobjdump --dump-sass convSing.cubin > conSingcubin.sass
-cuobjdump --dump-sass -arch sm_89 convSing.cubin > conSingcubin_arch89.sass
-cuobjdump --dump-sass -arch sm_90 convSing.cubin > conSingcubin_arch90.sass
-cuobjdump --dump-sass -arch sm_90 convSing_arch90.cubin > convSing_arch90cubin.sass
+cuobjdump --dump-sass convolution.cubin > convolution.sass
+cuobjdump --dump-sass -arch sm_89 convolution_arch89.cubin > convolution_arch89.sass
+cuobjdump --dump-sass -arch sm_90 convolution_arch90.cubin > convolution_arch90.sass
+
+DRYRUN: (View compilation steps)
+
+nvcc convolution.cu -arch=sm_90 -o convolution_dry --dryrun
+
