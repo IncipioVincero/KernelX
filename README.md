@@ -9,7 +9,7 @@ IncipioVincero
 
 ## 1. Objectives
 <!--Describe the task being solved/researched-->
-- Review the compilation steps carried out by NVIDIA's NVCC compiler [https://docs.nvidia.com/cuda/cuda-compiler-driver-nvcc/]
+- Review the compilation steps carried out by NVIDIA's NVCC compiler [see documentation](https://docs.nvidia.com/cuda/cuda-compiler-driver-nvcc/)
 - Examine ptxas compilation steps to decipher connection between PTX and SASS
 ---
 
@@ -60,7 +60,7 @@ pip install -r requirements.txt
 
 B. Wandb Dashboard
 
-(Companion Wandb Dashboard Link)[https://wandb.ai/kw_columbia?shareProfileType=copy]
+[Companion wandb dashboard](https://wandb.ai/kw_columbia?shareProfileType=copy)
 
 ---
 
