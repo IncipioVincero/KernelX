@@ -20,12 +20,12 @@ IncipioVincero
 - Two convolution kernels are presented: one with inline ptx add to manage memory and the other without it.
 - Kernels are compiled to PTX and SASS using **compilation.sh** script [KernelX/src/Compilation/compilation.sh]
 - .SASS and .ptx files are created to allowe for comparison of instructions used.
-- 
+
 
 ---
 ## 3. Model Integration
 - Both convolution kernels are incorporated in small CNN model.
-- **model_integration.ipynb** file shows how to setup and run CNN models with each kernel, view timing results and generate roofline model.
+- The **model_integration.ipynb** file shows how to setup and run CNN models with each kernel, view timing results and generate roofline model.
 
 - You can run the model integration sample in the **model_integration.ipynb** file in /KernelX/src/Model_Integration folder
 
