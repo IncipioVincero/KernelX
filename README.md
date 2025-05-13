@@ -36,12 +36,12 @@ IncipioVincero
 
 | Kernel               | Stand-alone Execution Time        | Execution Time within Model |
 |----------------------|-------------|--------------------|                
-| Convolution (non-inline) | XX.XX%      |                    |
-| Convolution (inline ptx)   | XX.XX ms    |                    |
-| Model Size           | XX MB       |                    |
-| Peak Memory Use      | XX MB       |                    |
-| Training Time/Epoch  | XX s        |                    |
-| Device               | A100, Jetson Nano, M1 Pro, etc.  |
+| Convolution (non-inline) | <>       |                    |
+| Convolution (inline ptx)   | <>    |                    |
+| Model Size           | <>       |                    |
+| Peak Memory Use      | <>       |                    |
+| Training Time/Epoch  | <>       |                    |
+| Device               | H100  |
 
 ---
 
