@@ -25,14 +25,10 @@ IncipioVincero
 ---
 ## 3. Model Integration
 - Both convolution kernels are incorporated in small CNN model.
-- The **model_integration.ipynb** file shows how to setup and run CNN models with each kernel, view timing results and generate roofline model.
-
-- You can run the model integration sample in the **model_integration.ipynb** file in /KernelX/src/Model_Integration folder
-
-
+- The **model_integration.ipynb** file [see here](/KernelX/src/Model_Integration) shows how to setup and run CNN models with each kernel, view timing results and generate roofline model.
 
 ---
-## 4. Final Results Summary
+Model Integration Results Summary
 
 
 
@@ -47,7 +43,6 @@ IncipioVincero
 
 ---
 
-## 4. Reproducibility Instructions
 
 ### A. Requirements
 
