@@ -10,6 +10,9 @@ CUOBJDUMP:
 cuobjdump --dump-sass convolution.cubin > convolution.sass
 cuobjdump --dump-sass -arch sm_89 convolution_arch89.cubin > convolution_arch89.sass
 cuobjdump --dump-sass -arch sm_90 convolution_arch90.cubin > convolution_arch90.sass
+cuobjdump --gpu-architecture=sm_90 convolution_inline.binary > convolution_inline_sm90.SASS
+cuobjdump --gpu-architecture=sm_90a convolution_inline.binary > convolution_inline_sm90a.SASS
+
 
 DRYRUN: (View compilation steps)
 
