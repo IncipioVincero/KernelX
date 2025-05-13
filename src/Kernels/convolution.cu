@@ -1,10 +1,4 @@
-//Source: Programming Massively Parallel Processors Fourth Edition
-//Link: https://github.com/R100001/Programming-Massively-Parallel-Processors
-
 #include <stdio.h>
-
-#define DEBUG
-
 
 #define Mask_width 5
 #define Mask_radius Mask_width / 2
@@ -34,23 +28,6 @@ __global__ void convolution(float *I, const float *__restrict__ M, float *P,
             N_ds[destY][destX] = 0;
         }
         
-        /*// Second batch loading
-        dest = threadIdx.y * TILE_WIDTH + threadIdx.x + TILE_WIDTH * TILE_WIDTH;
-        destY = dest / w;
-        destX = dest % w;
-        srcY = blockIdx.y * TILE_WIDTH + destY - Mask_radius;
-        srcX = blockIdx.x * TILE_WIDTH + destX - Mask_radius;
-        src = (srcY * width + srcX) * channels + k;
-        
-        if (destY < w) {
-
-            if (srcY >= 0 && srcY < height && srcX >= 0 && srcX < width) {
-                N_ds[destY][destX] = I[src];
-            } 
-            else {
-                N_ds[destY][destX] = 0;
-            }
-        }*/
         __syncthreads();
     
         float accum = 0;
@@ -68,7 +45,6 @@ __global__ void convolution(float *I, const float *__restrict__ M, float *P,
         __syncthreads();
     }
 }
-
 
 int main(int argc, char *argv[]) {
 
@@ -111,28 +87,6 @@ int main(int argc, char *argv[]) {
         for (int j = 0; j < maskColumns; ++j)
             hostMaskData[i * maskColumns + j] = ((float)(rand() % 256) / 255.0f) / (Mask_width * Mask_width / 4.0f); 
 
-#ifdef DEBUG
-    printf("Input Image:\n");
-
-    for(int k = 0; k < imageChannels; ++k) {
-        for (int i = 0; i < imageHeight; ++i) {
-            for (int j = 0; j < imageWidth; ++j)
-                printf("%f ", hostInputImageData[(i * imageWidth + j) * imageChannels + k]);
-            printf("\n");
-        }
-        printf("\n\n");
-    }
-    printf("\n\n");
-
-    printf("Mask:\n");
-    for (int i = 0; i < maskRows; ++i) {
-        for (int j = 0; j < maskColumns; ++j)
-            printf("%f ", hostMaskData[i * maskColumns + j]);
-        printf("\n");
-    }
-    printf("\n\n");
-#endif
-
     // Allocate device memory
     cudaMalloc((void **)&deviceInputImageData, imageHeight * imageWidth * imageChannels * sizeof(float));
     cudaMalloc((void **)&deviceOutputImageData, imageHeight * imageWidth * imageChannels * sizeof(float));
@@ -147,6 +101,7 @@ int main(int argc, char *argv[]) {
     dim3 dimGrid((float)(imageWidth + TILE_WIDTH - 1) / TILE_WIDTH,
                  (float)(imageHeight + TILE_WIDTH - 1) / TILE_WIDTH);
     dim3 dimBlock(TILE_WIDTH, TILE_WIDTH, 1);
+    
     convolution<<<dimGrid, dimBlock>>>(deviceInputImageData, deviceMaskData,
                                        deviceOutputImageData, imageChannels,
                                        imageWidth, imageHeight);
@@ -155,19 +110,6 @@ int main(int argc, char *argv[]) {
     cudaMemcpy(hostOutputImageData, deviceOutputImageData, 
                imageWidth * imageHeight * imageChannels * sizeof(float),
                cudaMemcpyDeviceToHost);
-
-#ifdef DEBUG
-    printf("Output Image:\n");
-    for(int k = 0; k < imageChannels; ++k) {
-        for (int i = 0; i < imageHeight; ++i) {
-            for (int j = 0; j < imageWidth; ++j)
-                printf("%f ", hostOutputImageData[(i * imageWidth + j) * imageChannels + k]);
-            printf("\n");
-        }
-        printf("\n\n");
-    }
-    printf("\n\n");
-#endif
 
     cudaFree(deviceInputImageData);
     cudaFree(deviceOutputImageData);
