@@ -18,7 +18,7 @@ IncipioVincero
 - Framework (e.g., PyTorch, TensorFlow)
 - Any custom layers or changes to standard models-->
 - Two convolution kernels are presented: one with inline ptx add to manage memory and the other without it.
-- Kernels are compiled to PTX and SASS using **compilation.sh** script [Path: KernelX/src/Compilation/compilation.sh]
+- Kernels are compiled to PTX and SASS using **compilation.sh** script [KernelX/src/Compilation/compilation.sh]
 - .SASS and .ptx files are created to allowe for comparison of instructions used.
 - 
 
@@ -26,6 +26,8 @@ IncipioVincero
 ## 3. Model Integration
 - Both convolution kernels are incorporated in small CNN model.
 - **model_integration.ipynb** file shows how to setup and run CNN models with each kernel, view timing results and generate roofline model.
+
+- You can run the model integration sample in the **model_integration.ipynb** file in /KernelX/src/Model_Integration folder
 
 
 
@@ -63,8 +65,6 @@ B. Wandb Dashboard
 
 ---
 
-### C. Specify for Training or For Inference or if Both 
-
 <!--To train the model from scratch:
 ```bash
 python train.py --config configs/default.yaml
@@ -72,8 +72,8 @@ python train.py --config configs/default.yaml
 
 ---
 
-### D. Evaluation
-
+### C. Evaluation
+TBD
 <!--To evaluate the trained model:
 ```bash
 python eval.py --weights checkpoints/best_model.pth
@@ -83,6 +83,17 @@ python eval.py --weights checkpoints/best_model.pth
 
 ### E. Quickstart: Minimum Reproducible Result
 
+**Compilation**
+
+Script: compilation.sh
+Location: /KernelX/src/Compilation
+
+1. Edit compilation script
+   | Variables | Description |
+   | --------- | ------------|
+   |  ARCH         | GPU Architecture (e.g. sm_90, etc.)            |
+   |  FILES          | List of files to compile            |
+   | SOURCE_PATH      | Path to directory containing target files |
 <!--To reproduce our minimum reported result (e.g., XX.XX% accuracy), run:
 
 ```bash
@@ -101,7 +112,8 @@ python eval.py --weights checkpoints/best_model.pth
 
 ---
 
-## 5. Notes (up to you)
+## 5. Notes 
+TBD
 <!-- - All scripts are located in `scripts/`, `train.py`, `eval.py`, and `configs/`.
 - Trained Model are saved in `models/`.
 - Contact information-->
