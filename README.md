@@ -60,8 +60,7 @@ pip install -r requirements.txt
 
 B. Wandb Dashboard
 
-<!--View training and evaluation metrics here: Wandb Dashboard Link
-(Replace with actual link)-->
+(Companion Wandb Dashboard Link)[https://wandb.ai/kw_columbia?shareProfileType=copy]
 
 ---
 
@@ -69,8 +68,6 @@ B. Wandb Dashboard
 ```bash
 python train.py --config configs/default.yaml
 ```-->
-
----
 
 ### C. Evaluation
 TBD
