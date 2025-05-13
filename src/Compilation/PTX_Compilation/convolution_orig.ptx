@@ -7,34 +7,35 @@
 //
 
 .version 8.3
-.target sm_90
+.target sm_52
 .address_size 64
 
-	// .globl	convolution
-// _ZZ11convolutionE4N_ds has been demoted
+	// .globl	_Z11convolutionPfPKfS_iii
+// _ZZ11convolutionPfPKfS_iiiE4N_ds has been demoted
 
-.visible .entry convolution(
-	.param .u64 convolution_param_0,
-	.param .u64 convolution_param_1,
-	.param .u64 convolution_param_2,
-	.param .u32 convolution_param_3,
-	.param .u32 convolution_param_4,
-	.param .u32 convolution_param_5
+.visible .entry _Z11convolutionPfPKfS_iii(
+	.param .u64 _Z11convolutionPfPKfS_iii_param_0,
+	.param .u64 _Z11convolutionPfPKfS_iii_param_1,
+	.param .u64 _Z11convolutionPfPKfS_iii_param_2,
+	.param .u32 _Z11convolutionPfPKfS_iii_param_3,
+	.param .u32 _Z11convolutionPfPKfS_iii_param_4,
+	.param .u32 _Z11convolutionPfPKfS_iii_param_5
 )
 {
 	.reg .pred 	%p<13>;
 	.reg .f32 	%f<81>;
 	.reg .b32 	%r<43>;
+	.reg .f64 	%fd<3>;
 	.reg .b64 	%rd<17>;
 	// demoted variable
-	.shared .align 4 .b8 _ZZ11convolutionE4N_ds[1600];
+	.shared .align 4 .b8 _ZZ11convolutionPfPKfS_iiiE4N_ds[1600];
 
-	ld.param.u64 	%rd7, [convolution_param_0];
-	ld.param.u64 	%rd8, [convolution_param_1];
-	ld.param.u64 	%rd9, [convolution_param_2];
-	ld.param.u32 	%r5, [convolution_param_3];
-	ld.param.u32 	%r6, [convolution_param_4];
-	ld.param.u32 	%r7, [convolution_param_5];
+	ld.param.u64 	%rd7, [_Z11convolutionPfPKfS_iii_param_0];
+	ld.param.u64 	%rd8, [_Z11convolutionPfPKfS_iii_param_1];
+	ld.param.u64 	%rd9, [_Z11convolutionPfPKfS_iii_param_2];
+	ld.param.u32 	%r5, [_Z11convolutionPfPKfS_iii_param_3];
+	ld.param.u32 	%r6, [_Z11convolutionPfPKfS_iii_param_4];
+	ld.param.u32 	%r7, [_Z11convolutionPfPKfS_iii_param_5];
 	setp.lt.s32 	%p3, %r5, 1;
 	@%p3 bra 	$L__BB0_7;
 
@@ -63,7 +64,7 @@
 	and.pred  	%p6, %p5, %p4;
 	setp.lt.s32 	%p7, %r26, %r6;
 	and.pred  	%p1, %p7, %p6;
-	mov.u32 	%r28, _ZZ11convolutionE4N_ds;
+	mov.u32 	%r28, _ZZ11convolutionPfPKfS_iiiE4N_ds;
 	mad.lo.s32 	%r29, %r16, 80, %r28;
 	shl.b32 	%r30, %r18, 2;
 	add.s32 	%r1, %r29, %r30;
@@ -178,7 +179,9 @@ $L__BB0_4:
 	fma.rn.f32 	%f28, %f78, %f25, %f77;
 	@%p11 bra 	$L__BB0_6;
 
-	cvt.sat.f32.f32 	%f79, %f28;
+	cvt.f64.f32 	%fd1, %f28;
+	cvt.sat.f64.f64 	%fd2, %fd1;
+	cvt.rn.f32.f64 	%f79, %fd2;
 	st.global.f32 	[%rd15], %f79;
 
 $L__BB0_6:

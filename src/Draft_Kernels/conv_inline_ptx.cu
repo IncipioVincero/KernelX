@@ -39,7 +39,7 @@ __global__ void convolution_with_ptx(float *I, const float *__restrict__ M, floa
                 float val = 0.0f;
                 
                 // Load the value from shared memory using PTX inline assembly
-                asm("ld.shared.f32 %0, [%1];" : "=f"(val) : "l"(&N_ds[threadIdx.y + y][threadIdx.x + x]));
+                asm volatile("ld.shared.f32 %0, [%1];" : "=f"(val) : "l"(&N_ds[threadIdx.y + y][threadIdx.x + x]));
                 
                 // Accumulate the result
                 accum += val * M[y * Mask_width + x];
