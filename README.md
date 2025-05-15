@@ -13,33 +13,10 @@ IncipioVincero
 - Examine ptxas compilation steps to decipher connection between PTX and SASS
 ---
 
-## 2. Static Analysis of PTX/SASS and Experimental Inline PTX 
+## 2. Static Analysis of PTX/SASS
 <!--Summarize the model architecture(s) used (e.g., ResNet-18, Transformer). Include:
 - Framework (e.g., PyTorch, TensorFlow)
 - Any custom layers or changes to standard models-->
-- Two convolution kernels are presented: one with inline ptx add to manage memory and the other without it.
-- Kernels are compiled to PTX and SASS using **compilation.sh** script [KernelX/src/Compilation/compilation.sh]
-- .SASS and .ptx files are created to allowe for comparison of instructions used.
-
-
----
-## 3. Model Integration
-- Both convolution kernels are incorporated in small CNN model.
-- The **model_integration.ipynb** file [see here](/src/Model_Integration) shows how to setup and run CNN models with each kernel, view timing results and generate roofline model.
-
----
-Model Integration Results Summary
-
-
-
-| Kernel               | Stand-alone Execution Time        | Execution Time within Model |
-|----------------------|-------------|--------------------|                
-| Convolution (non-inline) | <>       |                    |
-| Convolution (inline ptx)   | <>    |                    |
-| Model Size           | <>       |                    |
-| Peak Memory Use      | <>       |                    |
-| Training Time/Epoch  | <>       |                    |
-| Device               | H100  |
 
 ---
 
