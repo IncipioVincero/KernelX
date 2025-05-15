@@ -17,6 +17,8 @@ IncipioVincero
 <!--Summarize the model architecture(s) used (e.g., ResNet-18, Transformer). Include:
 - Framework (e.g., PyTorch, TensorFlow)
 - Any custom layers or changes to standard models-->
+See the [cuda.commands](/src/Utilties/cuda.commands) file to view sample commands that can be used for analysis. 
+
 
 ---
 
@@ -27,6 +29,8 @@ IncipioVincero
 ```bash
 pip install -r requirements.txt
 ```-->
+- **H100 GPU** (sm_90/90a, compute_90)
+- Linux based operating system 
 
 ---
 
@@ -41,12 +45,6 @@ B. Wandb Dashboard
 python train.py --config configs/default.yaml
 ```-->
 
-### C. Evaluation
-TBD
-<!--To evaluate the trained model:
-```bash
-python eval.py --weights checkpoints/best_model.pth
-```-->
 
 ---
 
@@ -54,10 +52,9 @@ python eval.py --weights checkpoints/best_model.pth
 
 **Compilation**
 
-Script: compilation.sh
-Location: /KernelX/src/Compilation
+**NVCC Dryrun**
+- Modify the variables in [final_template.sh](/src/Utilities/final_template.sh) script to suit your use case and run : ./final_template.sh
 
-1. Edit compilation script
    | Variables | Description |
    | --------- | ------------|
    |  ARCH         | GPU Architecture (e.g. sm_90, etc.)            |
