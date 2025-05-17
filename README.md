@@ -17,7 +17,7 @@ IncipioVincero
 <!--Summarize the model architecture(s) used (e.g., ResNet-18, Transformer). Include:
 - Framework (e.g., PyTorch, TensorFlow)
 - Any custom layers or changes to standard models-->
-See the [cuda.commands](/src/Utilties/cuda.commands) file to view sample commands that can be used for analysis. 
+See the [cuda.commands](/src/Utilities/cuda.commands) file to view sample commands that can be used for analysis. 
 
 
 ---
@@ -53,7 +53,7 @@ python train.py --config configs/default.yaml
 **Compilation**
 
 **NVCC Dryrun**
-- Modify the variables in [final_template.sh](/src/Utilities/finalTemplate.sh) script to suit your use case and run : ./finalTemplate.sh
+- Modify the variables in [finalTemplate.sh](/src/Utilities/finalTemplate.sh) script to suit your use case and run : ./finalTemplate.sh
 
    | Variables | Description |
    | --------- | ------------|
