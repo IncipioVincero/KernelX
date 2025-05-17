@@ -53,7 +53,7 @@ python train.py --config configs/default.yaml
 **Compilation**
 
 **NVCC Dryrun**
-- Modify the variables in [final_template.sh](/src/Utilities/final_template.sh) script to suit your use case and run : ./final_template.sh
+- Modify the variables in [final_template.sh](/src/Utilities/finalTemplate.sh) script to suit your use case and run : ./finalTemplate.sh
 
    | Variables | Description |
    | --------- | ------------|
