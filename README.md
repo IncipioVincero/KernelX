@@ -35,8 +35,8 @@ pip install -r requirements.txt
 ---
 
 B. Wandb Dashboard
-
-[Companion wandb dashboard](https://wandb.ai/kw_columbia?shareProfileType=copy)
+TBD 
+<!--[Companion wandb dashboard](https://wandb.ai/kw_columbia?shareProfileType=copy)-->
 
 ---
 
